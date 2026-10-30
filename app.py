@@ -69,6 +69,7 @@ if question:
     with st.chat_message("user"):
         st.markdown(question)
 
+    
     with st.chat_message("assistant"):
         with st.spinner("Ton professeur réfléchit..."):
             try:
@@ -89,9 +90,9 @@ if question:
                     {"role": "assistant", "content": answer}
                 )
 
-            
-except Exception as error:
-    st.exception(error)
+            except Exception as error:
+                st.exception(error)
+
             
                 
                 
