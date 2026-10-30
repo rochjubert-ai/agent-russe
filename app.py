@@ -287,8 +287,7 @@ if question:
     with st.chat_message("user"):
         st.markdown(question)
 
-    
-    with st.chat_message("assistant"):
+with st.chat_message("assistant"):
     with st.spinner("Ton professeur réfléchit..."):
         try:
             response = client.chat.completions.create(
