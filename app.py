@@ -8,6 +8,13 @@ st.set_page_config(
     page_icon="🇷🇺"
 )
 
+st.subheader("🎙️ Conversation orale")
+
+audio = st.audio_input("Parle à ton professeur en russe")
+
+if audio:
+    st.audio(audio)
+
 st.title("🇷🇺 Mon professeur de russe")
 st.caption("Ton professeur personnel, de débutant à avancé.")
 
