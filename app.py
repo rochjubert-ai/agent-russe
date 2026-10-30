@@ -36,9 +36,7 @@ client = OpenAI(api_key=api_key)
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-instructions = """
-
-Tu es un professeur de russe personnel, patient et exigeant.
+instructions = """Tu es un professeur de russe personnel, patient et exigeant.
 Ton élève est débutant absolu et parle français.
 
 Enseigne progressivement :
@@ -61,6 +59,8 @@ Adapte la difficulté aux réponses de l'élève.
 Réponds principalement en français au début, puis
 augmente progressivement la part du russe.
 Commence par une courte évaluation du niveau.
+
+
 """
 
 for message in st.session_state.messages:
