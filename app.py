@@ -301,15 +301,16 @@ if question:
                     ]
                 )
 
-                answer = response.choices[0].message.content
+                                answer = response.choices[0].message.content
                 st.markdown(answer)
-                speech = client.audio.speech.create(
-    model="gpt-4o-mini-tts",
-    voice="alloy",
-    input=answer
-)
 
-st.audio(speech.content, format="audio/mp3")
+                speech = client.audio.speech.create(
+                    model="gpt-4o-mini-tts",
+                    voice="alloy",
+                    input=answer
+                )
+
+                st.audio(speech.content, format="audio/mp3")
 
                 st.session_state.messages.append(
                     {"role": "assistant", "content": answer}
@@ -317,7 +318,3 @@ st.audio(speech.content, format="audio/mp3")
 
             except Exception as error:
                 st.exception(error)
-
-            
-                
-                
