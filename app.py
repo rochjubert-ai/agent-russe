@@ -67,7 +67,20 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
+
 question = st.chat_input("Écris ici ton message...")
+
+if st.button("🎙️ Transcrire et envoyer") and audio:
+    try:
+        transcription = client.audio.transcriptions.create(
+            model="gpt-4o-mini-transcribe",
+            file=audio
+        )
+        question = transcription.text
+        st.success("Voici ce que j'ai compris : " + question)
+    except Exception as error:
+        st.error("Erreur de transcription : " + str(error))
+
 
 if question:
     st.session_state.messages.append(
