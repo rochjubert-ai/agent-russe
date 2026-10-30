@@ -289,32 +289,32 @@ if question:
 
     
     with st.chat_message("assistant"):
-        with st.spinner("Ton professeur réfléchit..."):
-            try:
-                response = client.chat.completions.create(
-                    model=os.getenv(
-                        "OPENAI_MODEL", "gpt-4.1-mini"
-                    ),
-                    messages=[
-                        {"role": "system", "content": instructions},
-                        *st.session_state.messages
-                    ]
-                )
+    with st.spinner("Ton professeur réfléchit..."):
+        try:
+            response = client.chat.completions.create(
+                model=os.getenv(
+                    "OPENAI_MODEL", "gpt-4.1-mini"
+                ),
+                messages=[
+                    {"role": "system", "content": instructions},
+                    *st.session_state.messages
+                ]
+            )
 
-                                answer = response.choices[0].message.content
-                st.markdown(answer)
+            answer = response.choices[0].message.content
+            st.markdown(answer)
 
-                speech = client.audio.speech.create(
-                    model="gpt-4o-mini-tts",
-                    voice="alloy",
-                    input=answer
-                )
+            speech = client.audio.speech.create(
+                model="gpt-4o-mini-tts",
+                voice="alloy",
+                input=answer
+            )
 
-                st.audio(speech.content, format="audio/mp3")
+            st.audio(speech.content, format="audio/mp3")
 
-                st.session_state.messages.append(
-                    {"role": "assistant", "content": answer}
-                )
+            st.session_state.messages.append(
+                {"role": "assistant", "content": answer}
+            )
 
-            except Exception as error:
-                st.exception(error)
+        except Exception as error:
+            st.exception(error)
