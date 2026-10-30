@@ -89,8 +89,9 @@ if question:
                     {"role": "assistant", "content": answer}
                 )
 
-            except Exception as error:
-                st.error(
-                    "Une erreur est survenue. "
-                    "Vérifie la configuration de l'API."
-                )
+            
+except Exception as error:
+    st.exception(error)
+            
+                
+                
