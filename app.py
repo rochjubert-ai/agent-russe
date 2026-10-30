@@ -30,6 +30,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 instructions = """
+
 Tu es un professeur de russe personnel, patient et exigeant.
 Ton élève est débutant absolu et parle français.
 
